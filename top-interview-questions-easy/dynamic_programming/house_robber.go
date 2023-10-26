@@ -10,7 +10,6 @@ func rob(nums []int) int {
     }
     
     p := make([]int, len(nums))
-
 	p[0], p[1] = nums[0], max(nums[0], nums[1])
 	for i := 2; i < len(nums); i++ {
 		p[i] = max(nums[i] + p[i - 2], p[i - 1])		
