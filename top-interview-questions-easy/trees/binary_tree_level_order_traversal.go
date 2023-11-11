@@ -8,12 +8,12 @@ package trees
  *     Right *TreeNode
  * }
  */
- func levelOrder(root *TreeNode) [][]int {
-    if root == nil {
-		return [][]int {}
+func levelOrder(root *TreeNode) [][]int {
+	if root == nil {
+		return [][]int{}
 	}
-	return traverse([]*TreeNode { root }, [][]int {{ root.Val }})
- }
+	return traverse([]*TreeNode{root}, [][]int{{root.Val}})
+}
 
 func traverse(level []*TreeNode, values [][]int) [][]int {
 	var nextLevel []*TreeNode

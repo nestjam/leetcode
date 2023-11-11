@@ -1,15 +1,14 @@
 package linkedlist
 
-
 //Definition for singly-linked list.
 type ListNode struct {
-	Val int
+	Val  int
 	Next *ListNode
 }
- 
+
 func mergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
 	var head, tail *ListNode
-	
+
 	for list1 != nil || list2 != nil {
 		var next *ListNode
 		if list1 == nil {

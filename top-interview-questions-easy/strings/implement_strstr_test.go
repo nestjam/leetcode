@@ -16,35 +16,35 @@ func Test_strStr(t *testing.T) {
 			want: 0,
 			args: args{
 				haystack: "abc",
-				needle: "a",
+				needle:   "a",
 			},
 		},
 		{
 			want: 1,
 			args: args{
 				haystack: "abc",
-				needle: "b",
+				needle:   "b",
 			},
 		},
 		{
 			want: 2,
 			args: args{
 				haystack: "abac",
-				needle: "ac",
+				needle:   "ac",
 			},
 		},
 		{
 			want: -1,
 			args: args{
 				haystack: "abac",
-				needle: "df",
+				needle:   "df",
 			},
 		},
 		{
 			want: 4,
 			args: args{
 				haystack: "mississippi",
-				needle: "issip",
+				needle:   "issip",
 			},
 		},
 	}

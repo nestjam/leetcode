@@ -13,14 +13,14 @@ func Test_isAnagram(t *testing.T) {
 		want bool
 	}{
 		{
-			args: args {
+			args: args{
 				s: "anagram",
 				t: "nagaram",
 			},
 			want: true,
 		},
 		{
-			args: args {
+			args: args{
 				s: "car",
 				t: "rat",
 			},

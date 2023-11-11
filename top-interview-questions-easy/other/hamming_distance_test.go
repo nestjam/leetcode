@@ -7,25 +7,25 @@ import (
 
 func TestHammingDistance(t *testing.T) {
 	testCases := []struct {
-		x int
-		y int
-		want  int
-		name  string
+		x    int
+		y    int
+		want int
+		name string
 	}{
 		{
-			x: 1,
-			y: 1,
-			want:  0,
+			x:    1,
+			y:    1,
+			want: 0,
 		},
 		{
-			x: 1,
-			y: 0,
-			want:  1,
+			x:    1,
+			y:    0,
+			want: 1,
 		},
 		{
-			x: 1,
-			y: 4,
-			want:  2,
+			x:    1,
+			y:    4,
+			want: 2,
 		},
 	}
 

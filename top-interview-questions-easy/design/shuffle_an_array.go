@@ -6,9 +6,9 @@ import (
 )
 
 type Solution struct {
-	nums []int
+	nums     []int
 	shuffled []int
-	rand *rand.Rand
+	rand     *rand.Rand
 }
 
 func Constructor(nums []int) Solution {

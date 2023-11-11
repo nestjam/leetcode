@@ -16,7 +16,7 @@ func Test_sortedArrayToBST(t *testing.T) {
 	}{
 		{
 			args: args{
-				nums: []int { 0 },
+				nums: []int{0},
 			},
 			want: &TreeNode{
 				Val: 0,
@@ -24,7 +24,7 @@ func Test_sortedArrayToBST(t *testing.T) {
 		},
 		{
 			args: args{
-				nums: []int { -1, 0 },
+				nums: []int{-1, 0},
 			},
 			want: &TreeNode{
 				Val: 0,
@@ -35,7 +35,7 @@ func Test_sortedArrayToBST(t *testing.T) {
 		},
 		{
 			args: args{
-				nums: []int { -1, 0, 1 },
+				nums: []int{-1, 0, 1},
 			},
 			want: &TreeNode{
 				Val: 0,
@@ -49,7 +49,7 @@ func Test_sortedArrayToBST(t *testing.T) {
 		},
 		{
 			args: args{
-				nums: []int { 0, 1, 2, 3 },
+				nums: []int{0, 1, 2, 3},
 			},
 			want: &TreeNode{
 				Val: 2,
@@ -66,7 +66,7 @@ func Test_sortedArrayToBST(t *testing.T) {
 		},
 		{
 			args: args{
-				nums: []int { 0, 1, 2, 3, 4 },
+				nums: []int{0, 1, 2, 3, 4},
 			},
 			want: &TreeNode{
 				Val: 2,

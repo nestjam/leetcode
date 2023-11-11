@@ -9,24 +9,24 @@ import (
 func TestGenerate(t *testing.T) {
 	testCases := []struct {
 		numRows int
-		want  [][]int
-		desc  string
+		want    [][]int
+		desc    string
 	}{
 		{
 			numRows: 1,
-			want:  [][]int{{1}},
+			want:    [][]int{{1}},
 		},
 		{
 			numRows: 2,
-			want:  [][]int{{1}, {1, 1}},
+			want:    [][]int{{1}, {1, 1}},
 		},
 		{
 			numRows: 3,
-			want:  [][]int{{1}, {1, 1}, {1, 2, 1}},
+			want:    [][]int{{1}, {1, 1}, {1, 2, 1}},
 		},
 		{
 			numRows: 5,
-			want:  [][]int{{1}, {1, 1}, {1, 2, 1}, {1, 3, 3, 1}, {1, 4, 6, 4, 1}},
+			want:    [][]int{{1}, {1, 1}, {1, 2, 1}, {1, 3, 3, 1}, {1, 4, 6, 4, 1}},
 		},
 	}
 

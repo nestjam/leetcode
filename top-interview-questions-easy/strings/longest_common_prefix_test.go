@@ -14,19 +14,19 @@ func Test_longestCommonPrefix(t *testing.T) {
 		{
 			want: "flow",
 			args: args{
-				strs: []string { "flower", "flow" },
+				strs: []string{"flower", "flow"},
 			},
 		},
 		{
 			want: "",
 			args: args{
-				strs: []string { "a", "b" },
+				strs: []string{"a", "b"},
 			},
 		},
 		{
 			want: "",
 			args: args{
-				strs: []string { },
+				strs: []string{},
 			},
 		},
 	}

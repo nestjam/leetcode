@@ -14,31 +14,31 @@ func Test_rob(t *testing.T) {
 		{
 			want: 0,
 			args: args{
-				nums: []int { },
+				nums: []int{},
 			},
 		},
 		{
 			want: 1,
 			args: args{
-				nums: []int { 1 },
+				nums: []int{1},
 			},
 		},
 		{
 			want: 4,
 			args: args{
-				nums: []int { 1,2,3,1 },
+				nums: []int{1, 2, 3, 1},
 			},
 		},
 		{
 			want: 12,
 			args: args{
-				nums: []int { 2,7,9,3,1 },
+				nums: []int{2, 7, 9, 3, 1},
 			},
 		},
 		{
 			want: 4,
 			args: args{
-				nums: []int { 2,1,1,2 },
+				nums: []int{2, 1, 1, 2},
 			},
 		},
 	}

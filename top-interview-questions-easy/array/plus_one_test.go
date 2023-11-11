@@ -15,15 +15,15 @@ func Test_plusOne(t *testing.T) {
 		want []int
 	}{
 		{
-			args: args{ digits: []int{1}},
+			args: args{digits: []int{1}},
 			want: []int{2},
 		},
 		{
-			args: args{ digits: []int{}},
+			args: args{digits: []int{}},
 			want: []int{1},
 		},
 		{
-			args: args{ digits: []int{9}},
+			args: args{digits: []int{9}},
 			want: []int{1, 0},
 		},
 	}

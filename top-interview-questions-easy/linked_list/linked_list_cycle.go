@@ -9,7 +9,7 @@ func hasCycle(head *ListNode) bool {
 	for fast.Next != nil && fast.Next.Next != nil {
 		slow = slow.Next
 		fast = fast.Next.Next
-	
+
 		if slow == fast {
 			return true
 		}
@@ -23,7 +23,7 @@ func hasCycle(head *ListNode) bool {
 // 	var i int = 0
 // 	for head != nil {
 // 		i++
-// 		head = head.Next	
+// 		head = head.Next
 // 		if i > 10000 {
 // 			return true
 // 		}

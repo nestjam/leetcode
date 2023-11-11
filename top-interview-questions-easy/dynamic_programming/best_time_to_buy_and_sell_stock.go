@@ -6,7 +6,7 @@ func maxProfit(p []int) int {
 	for i := 1; i < len(p); i++ {
 		if p[i] < p[b] {
 			b = i
-		} 
+		}
 
 		profit := p[i] - p[b]
 		if maxProfit < profit {
@@ -32,6 +32,6 @@ func maxProfit(p []int) int {
 // 			maxProfit = profit
 // 		}
 // 	}
-	
+
 // 	return maxProfit
 // }

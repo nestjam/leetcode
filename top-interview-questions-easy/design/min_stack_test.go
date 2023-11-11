@@ -61,7 +61,7 @@ func TestGetMin(t *testing.T) {
 				s.Push(v)
 
 				got := s.GetMin()
-				
+
 				if got != tC.want[i] {
 					t.Errorf("expected %v but %v", tC.want, got)
 				}
@@ -69,7 +69,7 @@ func TestGetMin(t *testing.T) {
 
 			for i := len(tC.array) - 1; i >= 0; i-- {
 				got := s.GetMin()
-				
+
 				if got != tC.want[i] {
 					t.Errorf("expected %v but %v", tC.want, got)
 				}

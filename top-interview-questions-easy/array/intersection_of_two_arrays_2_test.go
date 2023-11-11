@@ -20,21 +20,21 @@ func Test_intersect(t *testing.T) {
 				nums1: []int{1},
 				nums2: []int{1, 0},
 			},
-			want: []int {1},
+			want: []int{1},
 		},
 		{
 			args: args{
-				nums1: []int{1,2,2,1},
+				nums1: []int{1, 2, 2, 1},
 				nums2: []int{2, 2},
 			},
-			want: []int {2, 2},
+			want: []int{2, 2},
 		},
 		{
 			args: args{
 				nums1: []int{1},
 				nums2: []int{1, 1},
 			},
-			want: []int {1},
+			want: []int{1},
 		},
 	}
 	for _, tt := range tests {

@@ -1,21 +1,21 @@
 package dynamicprogramming
 
 func rob(nums []int) int {
-    if len(nums) == 0 {
-        return 0
-    }
-
-    if len(nums) == 1 {
-        return nums[0]
-    }
-    
-    p := make([]int, len(nums))
-	p[0], p[1] = nums[0], max(nums[0], nums[1])
-	for i := 2; i < len(nums); i++ {
-		p[i] = max(nums[i] + p[i - 2], p[i - 1])		
+	if len(nums) == 0 {
+		return 0
 	}
 
-	return p[len(p) - 1]
+	if len(nums) == 1 {
+		return nums[0]
+	}
+
+	p := make([]int, len(nums))
+	p[0], p[1] = nums[0], max(nums[0], nums[1])
+	for i := 2; i < len(nums); i++ {
+		p[i] = max(nums[i]+p[i-2], p[i-1])
+	}
+
+	return p[len(p)-1]
 }
 
 func max(a, b int) int {
@@ -25,8 +25,6 @@ func max(a, b int) int {
 		return b
 	}
 }
-
-
 
 // slow...
 

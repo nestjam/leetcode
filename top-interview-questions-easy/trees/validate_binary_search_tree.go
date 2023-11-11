@@ -39,11 +39,11 @@ func isValidBST(root *TreeNode) bool {
 		}
 		pre = root
 		root = root.Right
-	} 
+	}
 	return true
 }
 
-// Выполнить обход дерева in-order, заполнить массив. Если массив упорядочен по возрастанию - бинарное дерево корректно 
+// Выполнить обход дерева in-order, заполнить массив. Если массив упорядочен по возрастанию - бинарное дерево корректно
 /*
 func isValidBST(root *TreeNode) bool {
 	s := []int{}

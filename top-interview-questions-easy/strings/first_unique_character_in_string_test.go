@@ -12,19 +12,19 @@ func Test_firstUniqChar(t *testing.T) {
 		want int
 	}{
 		{
-			args: args{ s: "a" },
+			args: args{s: "a"},
 			want: 0,
 		},
 		{
-			args: args{ s: "aa" },
+			args: args{s: "aa"},
 			want: -1,
 		},
 		{
-			args: args{ s: "leetcode" },
+			args: args{s: "leetcode"},
 			want: 0,
 		},
 		{
-			args: args{ s: "loveleetcode" },
+			args: args{s: "loveleetcode"},
 			want: 2,
 		},
 	}

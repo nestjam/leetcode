@@ -1,7 +1,7 @@
 package other
 
 func hammingDistance(x int, y int) int {
-    t := uint(x) ^ uint(y)
+	t := uint(x) ^ uint(y)
 	var onesCount uint8 = 0
 	for t > 0 {
 		onesCount += uint8(t & 1)

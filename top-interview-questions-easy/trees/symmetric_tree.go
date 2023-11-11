@@ -8,7 +8,7 @@ package trees
 
 func isSymmetric(root *TreeNode) bool {
 	return compare(root.Left, root.Right)
- }
+}
 
 func compare(left *TreeNode, right *TreeNode) bool {
 	if left == nil && right == nil {

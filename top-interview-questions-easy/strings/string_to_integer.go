@@ -21,28 +21,28 @@ func myAtoi(s string) int {
 			break
 		}
 	}
-	
+
 	var number int
 	const minInt32 uint64 = 2147483648
 	var n uint64
-	s = omitLeadingZeroes(string(num));
+	s = omitLeadingZeroes(string(num))
 	if len(s) > 10 {
 		n = minInt32
 	} else {
 		n = parseNumber(s)
 	}
-	
+
 	if negativeSign {
 		if n > minInt32 {
 			number = -2147483648
-		} else { 
+		} else {
 			number = -int(n)
 		}
 	} else {
 		const maxInt32 uint64 = 2147483647
 		if n > maxInt32 {
 			number = int(maxInt32)
-		} else { 
+		} else {
 			number = int(n)
 		}
 	}
@@ -54,7 +54,7 @@ func omitLeadingZeroes(s string) string {
 	for i := 0; i < len(s); i++ {
 		if s[i] != '0' {
 			break
-		} 
+		}
 		j++
 	}
 	return s[j:]
@@ -76,7 +76,7 @@ func parseNumber(s string) uint64 {
 	var number uint64 = 0
 	var p int = 1
 	for i := 0; i < len(s); i++ {
-		number = number * 10 + uint64(m[s[i]])
+		number = number*10 + uint64(m[s[i]])
 		p *= 10
 	}
 	return number

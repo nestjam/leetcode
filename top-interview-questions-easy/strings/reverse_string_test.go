@@ -8,23 +8,23 @@ import (
 
 func TestReverseString(t *testing.T) {
 	testCases := []struct {
-		str string
+		str  string
 		want string
 		desc string
 	}{
 		{
-			str: "",
+			str:  "",
 			want: "",
 		},
 		{
-			str: "12",
+			str:  "12",
 			want: "21",
 		},
 	}
 
 	for i, tC := range testCases {
-		t.Run(fmt.Sprintf("%d %v", i + 1, tC.desc), func(t *testing.T) {
-			var temp = []byte(tC.str);
+		t.Run(fmt.Sprintf("%d %v", i+1, tC.desc), func(t *testing.T) {
+			var temp = []byte(tC.str)
 			reverseString(temp)
 
 			if !reflect.DeepEqual([]byte(tC.want), temp) {

@@ -40,15 +40,15 @@ func Test_moveZeroes(t *testing.T) {
 		},
 		{
 			args: args{
-				nums: []int{ 1 },
+				nums: []int{1},
 			},
-			want: []int{ 1 },
+			want: []int{1},
 		},
 		{
 			args: args{
-				nums: []int{ 0, 1, 0, 2, 0 },
+				nums: []int{0, 1, 0, 2, 0},
 			},
-			want: []int{ 1, 2, 0, 0, 0 },
+			want: []int{1, 2, 0, 0, 0},
 		},
 		{
 			args: args{

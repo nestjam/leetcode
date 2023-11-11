@@ -18,7 +18,7 @@ func Test_levelOrder(t *testing.T) {
 			args: args{
 				root: nil,
 			},
-			want: [][]int {},
+			want: [][]int{},
 		},
 		{
 			args: args{
@@ -26,7 +26,7 @@ func Test_levelOrder(t *testing.T) {
 					Val: 1,
 				},
 			},
-			want: [][]int {{1}},
+			want: [][]int{{1}},
 		},
 	}
 	for _, tt := range tests {

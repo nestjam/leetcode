@@ -1,7 +1,7 @@
 package strings
 
 func isPalindrome(s string) bool {
-	i, j := 0, len(s) - 1
+	i, j := 0, len(s)-1
 	for i <= j {
 		if !isAlphanumeric(s[i]) {
 			i++

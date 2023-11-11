@@ -108,8 +108,8 @@ func TestIsValidBST(t *testing.T) {
 	}
 
 	for i, tC := range testCases {
-		t.Run(fmt.Sprintf("%d %v", i + 1, tC.desc), func(t *testing.T) {
-			got:= isValidBST(tC.root)
+		t.Run(fmt.Sprintf("%d %v", i+1, tC.desc), func(t *testing.T) {
+			got := isValidBST(tC.root)
 
 			if got != tC.want {
 				t.Errorf("expected %v but %v", tC.want, got)

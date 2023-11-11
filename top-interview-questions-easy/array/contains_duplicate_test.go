@@ -14,13 +14,13 @@ func Test_containsDuplicate(t *testing.T) {
 		{
 			want: true,
 			args: args{
-				nums: []int { 1, 1 },
+				nums: []int{1, 1},
 			},
 		},
 		{
 			want: false,
 			args: args{
-				nums: []int { 1, 2 },
+				nums: []int{1, 2},
 			},
 		},
 	}

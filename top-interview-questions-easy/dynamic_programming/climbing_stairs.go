@@ -1,7 +1,7 @@
 package dynamicprogramming
 
 func climbStairs(n int) int {
-    m := make(map[int]int, 2)
+	m := make(map[int]int, 2)
 	m[1] = 1
 	m[2] = 2
 	return step(n, m)

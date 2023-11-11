@@ -15,19 +15,19 @@ func Test_reverseBits(t *testing.T) {
 		want uint32
 	}{
 		{
-			args: args {
+			args: args{
 				num: 0,
 			},
 			want: 0,
 		},
 		{
-			args: args {
+			args: args{
 				num: 1,
 			},
 			want: bits.Reverse32(1),
 		},
 		{
-			args: args {
+			args: args{
 				num: 43261596,
 			},
 			want: 964176192,

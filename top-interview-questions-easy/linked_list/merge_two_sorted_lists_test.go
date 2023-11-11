@@ -16,33 +16,33 @@ func Test_mergeTwoLists(t *testing.T) {
 		want *ListNode
 	}{
 		{
-			want: &ListNode{ Val: 1 },
+			want: &ListNode{Val: 1},
 			args: args{
-				list1: &ListNode{ Val: 1 },
+				list1: &ListNode{Val: 1},
 				list2: nil,
 			},
 		},
 		{
-			want: &ListNode{ Val: 1 },
+			want: &ListNode{Val: 1},
 			args: args{
-				list2: &ListNode{ Val: 1 },
+				list2: &ListNode{Val: 1},
 				list1: nil,
 			},
 		},
 		{
-			want: &ListNode{ 
+			want: &ListNode{
 				Val: 1,
 				Next: &ListNode{
 					Val: 2,
 				},
 			},
 			args: args{
-				list2: &ListNode{ Val: 1 },
-				list1: &ListNode{ Val: 2 },
+				list2: &ListNode{Val: 1},
+				list1: &ListNode{Val: 2},
 			},
 		},
 		{
-			want: &ListNode{ 
+			want: &ListNode{
 				Val: 1,
 				Next: &ListNode{
 					Val: 1,
@@ -61,7 +61,7 @@ func Test_mergeTwoLists(t *testing.T) {
 				},
 			},
 			args: args{
-				list1: &ListNode{ 
+				list1: &ListNode{
 					Val: 1,
 					Next: &ListNode{
 						Val: 2,
@@ -70,7 +70,7 @@ func Test_mergeTwoLists(t *testing.T) {
 						},
 					},
 				},
-				list2: &ListNode{ 
+				list2: &ListNode{
 					Val: 1,
 					Next: &ListNode{
 						Val: 3,
@@ -78,7 +78,7 @@ func Test_mergeTwoLists(t *testing.T) {
 							Val: 4,
 						},
 					},
-				},	
+				},
 			},
 		},
 	}
