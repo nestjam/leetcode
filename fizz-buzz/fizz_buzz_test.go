@@ -39,7 +39,7 @@ func Test(t *testing.T) {
 		{
 			desc: "FizzBuzz",
 			n:    15,
-			want: []string{"1","2","Fizz","4","Buzz","Fizz","7","8","Fizz","Buzz","11","Fizz","13","14","FizzBuzz"},
+			want: []string{"1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz", "11", "Fizz", "13", "14", "FizzBuzz"},
 		},
 	}
 	for _, tC := range testCases {

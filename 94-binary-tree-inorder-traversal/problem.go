@@ -11,7 +11,7 @@ type TreeNode struct {
 // 	traversed := []int {}
 // 	current := root
 // 	stack := []*TreeNode { }
-	
+
 // 	for current != nil || len(stack) > 0 {
 // 		for current != nil {
 // 			stack = append(stack, current)
@@ -25,13 +25,11 @@ type TreeNode struct {
 // 	return traversed
 // }
 
-
 func inorderTraversal(root *TreeNode) []int {
-	if (root == nil){
+	if root == nil {
 		return []int{}
 	}
 
 	traversed := append(inorderTraversal(root.Left), root.Val)
 	return append(traversed, inorderTraversal(root.Right)...)
 }
-

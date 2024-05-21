@@ -13,23 +13,23 @@ func TestInorderTraversal(t *testing.T) {
 	}{
 		{
 			desc: "1",
-			tree: &TreeNode{ Val: 1 },
-			want: []int { 1 },
+			tree: &TreeNode{Val: 1},
+			want: []int{1},
 		},
 		{
 			desc: "",
 			tree: nil,
-			want: []int { },
+			want: []int{},
 		},
 		{
 			desc: "{1 l2 r3}",
-			tree: &TreeNode{ Val: 1, Left: &TreeNode{ Val: 2 }, Right: &TreeNode{ Val: 3 } },
-			want: []int { 2, 1, 3 },
+			tree: &TreeNode{Val: 1, Left: &TreeNode{Val: 2}, Right: &TreeNode{Val: 3}},
+			want: []int{2, 1, 3},
 		},
 		{
 			desc: "{1 l1.2 r1.3 l2.4}",
-			tree: &TreeNode{ Val: 1, Left: &TreeNode{ Val: 2, Left: &TreeNode{ Val: 4 } }, Right: &TreeNode{ Val: 3 } },
-			want: []int { 4, 2, 1, 3 },
+			tree: &TreeNode{Val: 1, Left: &TreeNode{Val: 2, Left: &TreeNode{Val: 4}}, Right: &TreeNode{Val: 3}},
+			want: []int{4, 2, 1, 3},
 		},
 	}
 	for _, tC := range testCases {

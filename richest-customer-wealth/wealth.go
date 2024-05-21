@@ -22,7 +22,7 @@ package richestcustomerwealth
 
 func maximumWealth(accounts [][]int) int {
 	maxWealth := 0
-	
+
 	for i := 0; i < len(accounts); i++ {
 		wealth := getCustomerWealth(accounts[i])
 		if wealth > maxWealth {

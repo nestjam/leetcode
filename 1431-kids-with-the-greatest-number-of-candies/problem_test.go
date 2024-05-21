@@ -18,26 +18,26 @@ func Test_kidsWithCandies(t *testing.T) {
 		{
 			name: "1",
 			args: args{
-				candies: []int {2,3,5,1,3},
+				candies:      []int{2, 3, 5, 1, 3},
 				extraCandies: 3,
 			},
-			want: []bool{true,true,true,false,true},
+			want: []bool{true, true, true, false, true},
 		},
 		{
 			name: "2",
 			args: args{
-				candies: []int {4,2,1,1,2},
+				candies:      []int{4, 2, 1, 1, 2},
 				extraCandies: 1,
 			},
-			want: []bool{true,false,false,false,false},
+			want: []bool{true, false, false, false, false},
 		},
 		{
 			name: "3",
 			args: args{
-				candies: []int {12,1,12},
+				candies:      []int{12, 1, 12},
 				extraCandies: 10,
 			},
-			want: []bool{true,false,true},
+			want: []bool{true, false, true},
 		},
 	}
 	for _, tt := range tests {

@@ -7,17 +7,17 @@ type Letters [26]int
 func newLetters(text string) *Letters {
 	letters := &Letters{}
 	for i := 0; i < len(text); i++ {
-		letters[text[i] - aIndexInAscii]++;
+		letters[text[i]-aIndexInAscii]++
 	}
 	return letters
 }
 
 func (l *Letters) has(symbol byte) bool {
-	return l[symbol - aIndexInAscii] > 0
+	return l[symbol-aIndexInAscii] > 0
 }
 
 func (l *Letters) useOne(symbol byte) {
-	l[symbol - aIndexInAscii]--
+	l[symbol-aIndexInAscii]--
 }
 
 func canConstruct(ransomNote string, magazine string) bool {
@@ -29,11 +29,11 @@ func canConstruct(ransomNote string, magazine string) bool {
 		}
 		letters.useOne(ransomNote[i])
 	}
-	
+
 	return true
-	
+
 	// var letters [26]int
-	
+
 	// for i := 0; i < len(magazine); i++ {
 	// 	letters[magazine[i] - aIndexInAscii]++;
 	// }
@@ -45,6 +45,6 @@ func canConstruct(ransomNote string, magazine string) bool {
 	// 	}
 	// 	letters[ransomNote[i] - aIndexInAscii]--
 	// }
-	
+
 	// return true
 }

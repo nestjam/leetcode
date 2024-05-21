@@ -5,71 +5,71 @@ import "testing"
 func TestRomanToInt(t *testing.T) {
 	testCases := []struct {
 		roman string
-		want int
+		want  int
 	}{
 		{
 			roman: "I",
-			want: 1,
+			want:  1,
 		},
 		{
 			roman: "II",
-			want: 2,
+			want:  2,
 		},
 		{
 			roman: "III",
-			want: 3,
+			want:  3,
 		},
 		{
 			roman: "IV",
-			want: 4,
+			want:  4,
 		},
 		{
 			roman: "V",
-			want: 5,
+			want:  5,
 		},
 		{
 			roman: "IX",
-			want: 9,
+			want:  9,
 		},
 		{
 			roman: "X",
-			want: 10,
+			want:  10,
 		},
 		{
 			roman: "XL",
-			want: 40,
+			want:  40,
 		},
 		{
 			roman: "L",
-			want: 50,
+			want:  50,
 		},
 		{
 			roman: "XC",
-			want: 90,
+			want:  90,
 		},
 		{
 			roman: "C",
-			want: 100,
+			want:  100,
 		},
 		{
 			roman: "CD",
-			want: 400,
+			want:  400,
 		},
 		{
 			roman: "D",
-			want: 500,
+			want:  500,
 		},
 		{
 			roman: "CM",
-			want: 900,
+			want:  900,
 		},
 		{
 			roman: "M",
-			want: 1000,
+			want:  1000,
 		},
 		{
 			roman: "MCMXCIV",
-			want: 1994,
+			want:  1994,
 		},
 	}
 	for _, tC := range testCases {

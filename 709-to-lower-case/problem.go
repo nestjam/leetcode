@@ -1,7 +1,7 @@
 package tolowercase
 
 func toLowerCase(s string) string {
-    const (
+	const (
 		d byte = 32
 		A byte = 65
 		Z byte = 90

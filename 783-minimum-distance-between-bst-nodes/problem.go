@@ -9,7 +9,7 @@ type TreeNode struct {
 }
 
 type data struct {
-	minDiff int
+	minDiff  int
 	prevNode *TreeNode
 }
 

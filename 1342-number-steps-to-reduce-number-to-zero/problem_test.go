@@ -5,32 +5,32 @@ import "testing"
 func Test(t *testing.T) {
 	testCases := []struct {
 		desc string
-		num int
+		num  int
 		want int
 	}{
 		{
 			desc: "0",
-			num: 0,
+			num:  0,
 			want: 0,
 		},
 		{
 			desc: "1",
-			num: 1,
+			num:  1,
 			want: 1,
 		},
 		{
 			desc: "2",
-			num: 2,
+			num:  2,
 			want: 2,
 		},
 		{
 			desc: "3",
-			num: 3,
+			num:  3,
 			want: 3,
 		},
 		{
 			desc: "14",
-			num: 14,
+			num:  14,
 			want: 6,
 		},
 	}

@@ -19,17 +19,17 @@ func TestPreorderTraversal(t *testing.T) {
 		{
 			desc: "",
 			tree: nil,
-			want: []int { },
+			want: []int{},
 		},
 		{
 			desc: "{1 l2 r3}",
-			tree: &TreeNode{ Val: 1, Left: &TreeNode{ Val: 2 }, Right: &TreeNode{ Val: 3 } },
-			want: []int { 1, 2, 3 },
+			tree: &TreeNode{Val: 1, Left: &TreeNode{Val: 2}, Right: &TreeNode{Val: 3}},
+			want: []int{1, 2, 3},
 		},
 		{
 			desc: "{1 l2 r3 2l:4}",
-			tree: &TreeNode{ Val: 1, Left: &TreeNode{ Val: 2, Left: &TreeNode{ Val: 4 } }, Right: &TreeNode{ Val: 3 } },
-			want: []int { 1, 2, 4, 3 },
+			tree: &TreeNode{Val: 1, Left: &TreeNode{Val: 2, Left: &TreeNode{Val: 4}}, Right: &TreeNode{Val: 3}},
+			want: []int{1, 2, 4, 3},
 		},
 	}
 	for _, tC := range testCases {

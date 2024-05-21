@@ -1,7 +1,7 @@
 package jewelsandstones
 
 func numJewelsInStones(jewels string, stones string) int {
-    set := make(map[byte]struct{}, len(jewels))
+	set := make(map[byte]struct{}, len(jewels))
 	for i := 0; i < len(jewels); i++ {
 		set[jewels[i]] = struct{}{}
 	}
@@ -13,5 +13,5 @@ func numJewelsInStones(jewels string, stones string) int {
 		}
 	}
 
-	return num;
+	return num
 }
