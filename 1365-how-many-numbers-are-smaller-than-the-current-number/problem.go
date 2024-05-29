@@ -1,22 +1,18 @@
 package howmanynumbersaresmallerthanthecurrentnumber
 
 func smallerNumbersThanCurrent(nums []int) []int {
-	res := make([]int, len(nums))
+	n := len(nums)
+	res := make([]int, n)
 
-	for i := 0; i < len(nums); i++ {
-		n := 0
-
-		for j := 0; j < len(nums); j++ {
-			if i == j {
-				continue
+	for i := 0; i < n - 1; i++ {
+		for j := i + 1; j < n; j++ {
+			if nums[i] > nums[j] {
+				res[i]++
 			}
-
-			if nums[j] < nums[i] {
-				n++
+			if nums[i] < nums[j] {
+				res[j]++
 			}
 		}
-
-		res[i] = n
 	}
 
 	return res
