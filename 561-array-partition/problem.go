@@ -8,7 +8,7 @@ func arrayPairSum(nums []int) int {
 	n := 0
 
 	for i := 0; i < len(nums); i += 2 {
-		n += min(nums[i], nums[i+1])
+		n += nums[i]
 	}
 
 	return n
