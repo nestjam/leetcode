@@ -10,15 +10,15 @@ func postorder(root *Node) []int {
 		return []int{}
 	}
 
-	return postorderRecursively(root)
+	const capacity = 5000 // max count is 10000
+	values := make([]int, 0, capacity)
+	postorderRecursively(root, &values)
+	return values
 }
 
-func postorderRecursively(root *Node) []int {
-	values := make([]int, 0)
-
+func postorderRecursively(root *Node, values *[]int) {
 	for i := 0; i < len(root.Children); i++ {
-		values = append(values, postorderRecursively(root.Children[i])...)
+		postorderRecursively(root.Children[i], values)
 	}
-
-	return append(values, root.Val)
+	*values = append(*values, root.Val)
 }
