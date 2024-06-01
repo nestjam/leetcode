@@ -1,7 +1,7 @@
 package selfdividingnumbers
 
 func selfDividingNumbers(left int, right int) []int {
-	nums := make([]int, 0, 5000)
+	nums := make([]int, 0)
 
 	for i := left; i <= right; i++ {
 		if isSelfDividingNumber(i) {
