@@ -1,7 +1,7 @@
 package nrepeatedelementinsize2narray
 
 func repeatedNTimes(nums []int) int {
-	m := make(map[int]struct{})
+	m := make(map[int]struct{}, len(nums)/4)
 
 	for i := 0; i < len(nums); i++ {
 		if _, ok := m[nums[i]]; ok {
