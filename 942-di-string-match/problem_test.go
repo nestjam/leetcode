@@ -36,19 +36,19 @@ func Test_diStringMatch(t *testing.T) {
 			args: args{
 				s: "DI",
 			},
-			want: []int{1, 0, 2},
+			want: []int{2, 0, 1},
 		},
 		{
 			args: args{
 				s: "DDI",
 			},
-			want: []int{2, 1, 0, 3},
+			want: []int{3, 2, 0, 1},
 		},
 		{
 			args: args{
 				s: "IDID",
 			},
-			want: []int{0, 2, 1, 4, 3},
+			want: []int{0, 4, 1, 3, 2},
 		},
 	}
 	for _, tt := range tests {
