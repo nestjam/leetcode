@@ -1,16 +1,18 @@
 package distringmatch
 
-func diStringMatch(s string) []int {
-	n := make([]int, len(s)+1)
-	for i := 0; i < len(n); i++ {
-		n[i] = i
-	}
+type node struct {
+	val  int
+	prev *node
+}
 
-	for i := 0; i < len(n); i++ {
-		cn := make([]int, len(n))
-		copy(cn, n)
-		cn[i] = -1
-		if r, ok := next([]int{n[i]}, cn, 0, s); ok {
+func diStringMatch(s string) []int {
+	for i := 0; i < len(s)+1; i++ {
+		if n, ok := next(&node{val: i}, 0, s); ok {
+			r := make([]int, len(s)+1)
+			for j := len(r) - 1; j >= 0; j-- {
+				r[j] = n.val
+				n = n.prev
+			}
 			return r
 		}
 	}
@@ -18,36 +20,41 @@ func diStringMatch(s string) []int {
 	return nil
 }
 
-func next(m []int, n []int, ind int, s string) ([]int, bool) {
+func next(n *node, ind int, s string) (*node, bool) {
 	if ind == len(s) {
-		return m, true
+		return n, true
 	}
 
-	for i := 0; i < len(n); i++ {
-		if n[i] == -1 {
+	for i := 0; i < len(s)+1; i++ {
+		if contains(n, i) {
 			continue
 		}
 
 		if s[ind] == 'D' {
-			if m[len(m)-1] < n[i] {
+			if n.val < i {
 				continue
 			}
 		} else {
-			if m[len(m)-1] > n[i] {
+			if n.val > i {
 				continue
 			}
 		}
 
-		cm := make([]int, len(m)+1)
-		copy(cm, m)
-		cm[len(m)] = n[i]
-		cn := make([]int, len(n))
-		copy(cn, n)
-		cn[i] = -1
-		if r, ok := next(cm, cn, ind+1, s); ok {
-			return r, true
+		m := &node{val: i, prev: n}
+		if m, ok := next(m, ind+1, s); ok {
+			return m, true
 		}
 	}
 
 	return nil, false
+}
+
+func contains(n *node, v int) bool {
+	for n != nil {
+		if n.val == v {
+			return true
+		}
+		n = n.prev
+	}
+	return false
 }
