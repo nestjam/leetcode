@@ -14,14 +14,14 @@ func longestPalindrome(s string) int {
 	l := 0
 	hasOdd := false
 	for i := 0; i < len(m); i++ {
-		if m[i]%2 == 0 {
-			l += m[i]
-		} else {
-			if !hasOdd {
+		l += m[i]
+
+		if m[i]%2 == 1 {
+			if hasOdd {
+				l--
+			} else {
 				hasOdd = true
-				l++
 			}
-			l += m[i] - 1
 		}
 	}
 
