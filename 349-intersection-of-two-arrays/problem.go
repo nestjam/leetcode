@@ -8,8 +8,8 @@ func intersection(nums1 []int, nums2 []int) []int {
 	slices.Sort(nums1)
 	slices.Sort(nums2)
 
-	i, j := 0, 0
-	s := make([]int, 0, 500)
+	i, j, k := 0, 0, -1
+	s := make([]int, 0, 100)
 
 	for i < len(nums1) && j < len(nums2) {
 		v := 0
@@ -25,7 +25,8 @@ func intersection(nums1 []int, nums2 []int) []int {
 			continue
 		}
 
-		if len(s) == 0 || v > s[len(s)-1] {
+		if v > k {
+			k = v
 			s = append(s, v)
 		}
 	}
