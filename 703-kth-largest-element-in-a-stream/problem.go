@@ -1,50 +1,56 @@
 package kthlargestelementinastream
 
+import "container/heap"
+
 type KthLargest struct {
-	n []int
+	n *IntHeap
+	k int
 }
 
 func Constructor(k int, nums []int) KthLargest {
-	n := make([]int, 0, k)
+	h := make(IntHeap, len(nums))
+	copy(h, nums)
+	p := &h
+	heap.Init(p)
 
-	for i := 0; i < len(nums); i++ {
-		n = add(n, nums[i])
+	for p.Len() > k {
+		heap.Pop(p)
 	}
 
 	return KthLargest{
-		n,
+		n: p,
+		k: k,
 	}
 }
 
 func (s *KthLargest) Add(val int) int {
-	s.n = add(s.n, val)
-	return s.n[len(s.n)-1]
+	heap.Push(s.n, val)
+
+	if s.n.Len() > s.k {
+		heap.Pop(s.n)
+	}
+
+	return (*s.n)[0]
 }
 
-func add(n []int, v int) []int {
-	if len(n) < cap(n) {
-		n = append(n, v)
-		sort(n)
-		return n
-	}
+type IntHeap []int
 
-	last := len(n) - 1
-	if n[last] > v {
-		return n
-	}
+func (h IntHeap) Len() int { return len(h) }
 
-	n[last] = v
-	sort(n)
+func (h IntHeap) Less(i, j int) bool { return h[i] < h[j] }
 
-	return n
+func (h IntHeap) Swap(i, j int) { h[i], h[j] = h[j], h[i] }
+
+func (h *IntHeap) Push(x any) {
+	// Push and Pop use pointer receivers because they modify the slice's length,
+	// not just its contents.
+	*h = append(*h, x.(int))
 }
 
-func sort(n []int) {
-	for i := len(n) - 1; i > 0; i-- {
-		if n[i] <= n[i-1] {
-			break
-		}
-
-		n[i-1], n[i] = n[i], n[i-1]
-	}
+func (h *IntHeap) Pop() any {
+	old := *h
+	n := len(old)
+	x := old[n-1]
+	*h = old[0 : n-1]
+	return x
 }
