@@ -24,10 +24,10 @@ func Test_topKFrequent(t *testing.T) {
 		},
 		{
 			args: args{
-				words: []string{"the","day","is","sunny","the","the","the","sunny","is","is"},
+				words: []string{"the", "day", "is", "sunny", "the", "the", "the", "sunny", "is", "is"},
 				k:     4,
 			},
-			want: []string{"the","is","sunny","day"},
+			want: []string{"the", "is", "sunny", "day"},
 		},
 	}
 	for _, tt := range tests {

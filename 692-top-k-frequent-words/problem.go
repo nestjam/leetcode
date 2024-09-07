@@ -18,18 +18,18 @@ func topKFrequent(words []string, k int) []string {
 
 type wordUsing struct {
 	word  string
-	count int
+	count int16
 }
 
 type wordsUsing []*wordUsing
 
 func newWordsUsing(words []string) *wordsUsing {
-	usings := make(map[string]int)
+	usings := make(map[string]int16)
 	for i := 0; i < len(words); i++ {
 		usings[words[i]]++
 	}
 
-	h := make(wordsUsing, 0)
+	h := make(wordsUsing, 0, len(usings))
 	for k, v := range usings {
 		h = append(h, &wordUsing{k, v})
 	}
@@ -40,15 +40,12 @@ func newWordsUsing(words []string) *wordsUsing {
 
 func (h wordsUsing) Len() int { return len(h) }
 
-func (h wordsUsing) Less(i, j int) bool { 
-	x := h[i]
-	y := h[j]
-	
-	if x.count != y.count {
-		return x.count > y.count 
+func (h wordsUsing) Less(i, j int) bool {
+	if h[i].count == h[j].count {
+		return strings.Compare(h[i].word, h[j].word) < 0
 	}
-	
-	return strings.Compare(x.word, y.word) < 0
+
+	return h[i].count > h[j].count
 }
 
 func (h wordsUsing) Swap(i, j int) { h[i], h[j] = h[j], h[i] }
