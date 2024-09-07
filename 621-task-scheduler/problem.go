@@ -12,23 +12,24 @@ func leastInterval(tasks []byte, n int) int {
 	groups := groupByTask(tasks)
 
 	for {
-		orderedGroups := sortByCount(groups)
+		orderedGroups := sortByTaskCount(groups)
+		oldCount := len(orderedGroups)
+		count := oldCount
 
-		l := len(groups)
-
-		for i := 0; i < min(n+1, l); i++ {
+		for i := 0; i < min(n+1, oldCount); i++ {
 			item := orderedGroups[i]
 			flow = append(flow, item.task)
 			item.count--
+			if item.count == 0 {
+				count--
+			}
 		}
 
-		groups = deleteEmpty(groups)
-
-		if len(groups) == 0 {
+		if count == 0 {
 			break
 		}
 
-		for i := 0; i < max(0, n-l+1); i++ {
+		for i := 0; i < max(0, n-oldCount+1); i++ {
 			flow = append(flow, idle)
 		}
 	}
@@ -36,23 +37,9 @@ func leastInterval(tasks []byte, n int) int {
 	return len(flow)
 }
 
-func deleteEmpty(groups []*taskGroup) []*taskGroup {
-	oldItems := groups
-
-	groups = make([]*taskGroup, 0)
-
-	for i := 0; i < len(oldItems); i++ {
-		if oldItems[i].count > 0 {
-			groups = append(groups, oldItems[i])
-		}
-	}
-
-	return groups
-}
-
-func sortByCount(groups []*taskGroup) []*taskGroup {
-	heap := newItemHeap(groups)
-	orderedGroups := make([]*taskGroup, 0, len(groups))
+func sortByTaskCount(groups []*taskGroup) []*taskGroup {
+	heap := newTaskGroupHeap(groups)
+	orderedGroups := make([]*taskGroup, 0, heap.Len())
 
 	for heap.Len() > 0 {
 		orderedGroups = append(orderedGroups, heap.next())
@@ -82,30 +69,32 @@ type taskGroup struct {
 	count int
 }
 
-type itemHeap []*taskGroup
+type taskGroupHeap []*taskGroup
 
-func newItemHeap(items []*taskGroup) *itemHeap {
-	h := make(itemHeap, 0, len(items))
+func newTaskGroupHeap(items []*taskGroup) *taskGroupHeap {
+	h := make(taskGroupHeap, 0, len(items))
 
 	for i := 0; i < len(items); i++ {
-		h = append(h, items[i])
+		if items[i].count > 0 {
+			h = append(h, items[i])
+		}
 	}
 
 	heap.Init(&h)
 	return &h
 }
 
-func (h itemHeap) Len() int { return len(h) }
+func (h taskGroupHeap) Len() int { return len(h) }
 
-func (h itemHeap) Less(i, j int) bool { return h[i].count > h[j].count }
+func (h taskGroupHeap) Less(i, j int) bool { return h[i].count > h[j].count }
 
-func (h itemHeap) Swap(i, j int) { h[i], h[j] = h[j], h[i] }
+func (h taskGroupHeap) Swap(i, j int) { h[i], h[j] = h[j], h[i] }
 
-func (h *itemHeap) Push(x any) {
+func (h *taskGroupHeap) Push(x any) {
 	*h = append(*h, x.(*taskGroup))
 }
 
-func (h *itemHeap) Pop() any {
+func (h *taskGroupHeap) Pop() any {
 	old := *h
 	n := len(old)
 	x := old[n-1]
@@ -113,6 +102,6 @@ func (h *itemHeap) Pop() any {
 	return x
 }
 
-func (h *itemHeap) next() *taskGroup {
+func (h *taskGroupHeap) next() *taskGroup {
 	return heap.Pop(h).(*taskGroup)
 }
