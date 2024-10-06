@@ -14,18 +14,12 @@ func findCheapestPrice(n int, flights [][]int, src int, dst int, k int) int {
 }
 
 func forward(path path) {
-	if path.len-2 > f.k {
+	if path.len-2 > f.k || (f.path != nil && path.score >= f.path.score) {
 		return
 	}
 
 	if path.n == f.dst {
-		if f.path == nil || f.path.score > path.score {
-			f.path = &path
-		}
-		return
-	}
-
-	if path.len-1 > f.k {
+		f.path = &path
 		return
 	}
 
@@ -67,7 +61,12 @@ func newPath(n int) path {
 }
 
 func (p path) append(e edge) path {
-	return path{n: e.n, score: p.score + e.score, len: p.len + 1, prev: &p}
+	return path{
+		n:     e.n,
+		score: p.score + e.score,
+		len:   p.len + 1,
+		prev:  &p,
+	}
 }
 
 func (p *path) contains(n int) bool {
