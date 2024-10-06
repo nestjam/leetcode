@@ -18,6 +18,16 @@ func forward(path path) {
 		return
 	}
 
+	n := path.n
+	if _, ok := f.visited[n]; !ok {
+		f.visited[n] = path
+	}
+	if path.score > f.visited[n].score && path.len >= f.visited[n].len {
+		return
+	} else {
+		f.visited[n] = path
+	}
+
 	if path.n == f.dst {
 		f.path = &path
 		return
@@ -32,17 +42,19 @@ func forward(path path) {
 }
 
 type cheapestFlight struct {
-	path  *path
-	graph graph
-	dst   int
-	k     int
+	path    *path
+	graph   graph
+	visited map[int]path
+	dst     int
+	k       int
 }
 
 func newCheapestFlight(n int, flights [][]int, dst int, k int) cheapestFlight {
 	return cheapestFlight{
-		graph: newGraph(n, flights),
-		dst:   dst,
-		k:     k,
+		graph:   newGraph(n, flights),
+		visited: make(map[int]path),
+		dst:     dst,
+		k:       k,
 	}
 }
 
