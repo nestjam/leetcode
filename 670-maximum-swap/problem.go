@@ -4,14 +4,20 @@ import "slices"
 
 func maximumSwap(num int) int {
 	d := parse(num)
+	var swapped bool
 
 	for i := 0; i < len(d)-1; i++ {
 		j := maxIndex(d, i)
 
 		if j != i {
 			d[i], d[j] = d[j], d[i]
+			swapped = true
 			break
 		}
+	}
+
+	if !swapped {
+		return num
 	}
 
 	return join(d)
