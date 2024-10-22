@@ -15,13 +15,11 @@ func maxUniqueSplit(s string) int {
 
 func split(p *substring, s string) {
 	if p.end == len(s) {
-		if p.num > m {
-			m = p.num
-		}
+		m = max(m, p.len())
 		return
 	}
 
-	c := newSubstring(p.num+1, p.end, p)
+	c := newSubstring(p.end, p)
 
 	for i := p.end; i < len(s); i++ {
 		c.end = i + 1
@@ -33,16 +31,15 @@ func split(p *substring, s string) {
 
 type substring struct {
 	prev *substring
-	num  int
 	end  int
 }
 
-func newSubstring(num, end int, prev *substring) substring {
-	return substring{num: num, end: end, prev: prev}
+func newSubstring(end int, prev *substring) substring {
+	return substring{end: end, prev: prev}
 }
 
 func newHead(end int) substring {
-	return newSubstring(1, end, nil)
+	return newSubstring(end, nil)
 }
 
 func (s *substring) value(t string) string {
@@ -63,4 +60,13 @@ func (s *substring) contains(c substring, t string) bool {
 	}
 
 	return false
+}
+
+func (s *substring) len() int {
+	n := 0
+	for s != nil {
+		n++
+		s = s.prev
+	}
+	return n
 }
