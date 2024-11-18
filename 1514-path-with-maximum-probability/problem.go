@@ -6,6 +6,7 @@ func maxProbability(n int, edges [][]int, succProb []float64, start_node int, en
 	dist := make([]float64, n)
 	visited := make([]bool, n)
 
+	graph := initGraph(n, edges)
 	for i := 0; i < n; i++ {
 		dist[i] = -1
 	}
@@ -21,9 +22,12 @@ func maxProbability(n int, edges [][]int, succProb []float64, start_node int, en
 		visited[u] = true
 		n--
 
-		neighbors := getNeighbors(u, edges, visited)
+		neighbors := graph[u]
 		for i := 0; i < len(neighbors); i++ {
 			v := neighbors[i]
+			if visited[v.node] {
+				continue
+			}
 			alt := dist[u] * succProb[v.edge]
 			if alt > dist[v.node] {
 				dist[v.node] = alt
@@ -38,19 +42,21 @@ func maxProbability(n int, edges [][]int, succProb []float64, start_node int, en
 	return round(dist[end_node])
 }
 
-func getNeighbors(u int, edges [][]int, visited []bool) []neighbor {
-	neighbors := make([]neighbor, 0)
+func initGraph(n int, edges [][]int) map[int]neighbors {
+	g := make(map[int]neighbors, n)
 
-	for i := 0; i < len(edges); i++ {
-		edge := edges[i]
-		if edge[0] == u && !visited[edge[1]] {
-			neighbors = append(neighbors, neighbor{edge: i, node: edge[1]})
-		} else if edge[1] == u && !visited[edge[0]] {
-			neighbors = append(neighbors, neighbor{edge: i, node: edge[0]})
-		}
+	for i := 0; i < n; i++ {
+		g[i] = make(neighbors, 0)
 	}
 
-	return neighbors
+	for i := 0; i < len(edges); i++ {
+		start := edges[i][0]
+		end := edges[i][1]
+		g[start] = append(g[start], neighbor{node: int16(end), edge: int16(i)})
+		g[end] = append(g[end], neighbor{node: int16(start), edge: int16(i)})
+	}
+
+	return g
 }
 
 func getNext(dist []float64, visited []bool) int {
@@ -77,6 +83,8 @@ func round(v float64) float64 {
 }
 
 type neighbor struct {
-	edge int
-	node int
+	edge int16
+	node int16
 }
+
+type neighbors []neighbor
