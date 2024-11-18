@@ -14,7 +14,7 @@ func maxProbability(n int, edges [][]int, succProb []float64, start_node int, en
 	for n > 0 {
 		u := getNext(dist, visited)
 
-		if u == -1 {
+		if u == -1 || u == end_node {
 			break
 		}
 
