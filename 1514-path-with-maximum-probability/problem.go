@@ -8,30 +8,29 @@ import (
 func maxProbability(n int, edges [][]int, succProb []float64, start_node int, end_node int) float64 {
 	dist := make([]float64, n)
 
-	q := newDistHeap(n)
 	graph := initGraph(n, edges)
 	for i := 0; i < n; i++ {
 		dist[i] = -1
-		q.add(i, dist[i])
 	}
 	dist[start_node] = 1
-	q.set(start_node, dist[start_node])
+
+	q := newDistHeap(n)
+	q.add(start_node, dist[start_node])
 
 	for len(q) > 0 {
 		d := q.get()
-		u := d.u
 
-		if u == -1 || u == end_node {
+		if d.u == -1 || d.u == end_node {
 			break
 		}
 
-		neighbors := graph[u]
+		neighbors := graph[d.u]
 		for i := 0; i < len(neighbors); i++ {
 			v := neighbors[i]
-			alt := dist[u] * succProb[v.edge]
+			alt := dist[d.u] * succProb[v.edge]
 			if alt > dist[v.node] {
 				dist[v.node] = alt
-				q.set(int(v.node), alt)
+				q.add(int(v.node), alt)
 			}
 		}
 	}
@@ -111,14 +110,4 @@ func (h *distHeap) add(u int, p float64) {
 
 func (h *distHeap) get() dist {
 	return heap.Pop(h).(dist)
-}
-
-func (h distHeap) set(u int, p float64) {
-	for i := 0; i < len(h); i++ {
-		if h[i].u == u {
-			h[i].p = p
-			heap.Fix(&h, i)
-			return
-		}
-	}
 }
