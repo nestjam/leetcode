@@ -2,8 +2,10 @@ package countunguardedcellsinthegrid
 
 func countUnguarded(m int, n int, guards [][]int, walls [][]int) int {
 	const (
-		wallAlias  = 5
-		guardAlias = 6
+		unguarded = 0
+		guarded   = 1
+		wall      = 5
+		guard     = 6
 	)
 
 	count := m*n - len(guards) - len(walls)
@@ -15,27 +17,27 @@ func countUnguarded(m int, n int, guards [][]int, walls [][]int) int {
 
 	for i := 0; i < len(walls); i++ {
 		w := walls[i]
-		grid[w[0]][w[1]] = wallAlias
+		grid[w[0]][w[1]] = wall
 	}
 
 	for i := 0; i < len(guards); i++ {
 		g := guards[i]
-		grid[g[0]][g[1]] = guardAlias
+		grid[g[0]][g[1]] = guard
 	}
 
 	for i := 0; i < m; i++ {
 		isGuarded := false
 		for j := 0; j < n; j++ {
-			if grid[i][j] == guardAlias {
+			if grid[i][j] == guard {
 				isGuarded = true
-			} else if grid[i][j] == wallAlias {
+			} else if grid[i][j] == wall {
 				isGuarded = false
 			} else {
 				if isGuarded {
-					if grid[i][j] == 0 {
+					if grid[i][j] == unguarded {
 						count--
 					}
-					grid[i][j]++
+					grid[i][j] = guarded
 				}
 			}
 		}
@@ -44,16 +46,16 @@ func countUnguarded(m int, n int, guards [][]int, walls [][]int) int {
 	for i := 0; i < m; i++ {
 		isGuarded := false
 		for j := n - 1; j >= 0; j-- {
-			if grid[i][j] == guardAlias {
+			if grid[i][j] == guard {
 				isGuarded = true
-			} else if grid[i][j] == wallAlias {
+			} else if grid[i][j] == wall {
 				isGuarded = false
 			} else {
 				if isGuarded {
-					if grid[i][j] == 0 {
+					if grid[i][j] == unguarded {
 						count--
 					}
-					grid[i][j]++
+					grid[i][j] = guarded
 				}
 			}
 		}
@@ -62,16 +64,16 @@ func countUnguarded(m int, n int, guards [][]int, walls [][]int) int {
 	for j := 0; j < n; j++ {
 		isGuarded := false
 		for i := 0; i < m; i++ {
-			if grid[i][j] == guardAlias {
+			if grid[i][j] == guard {
 				isGuarded = true
-			} else if grid[i][j] == wallAlias {
+			} else if grid[i][j] == wall {
 				isGuarded = false
 			} else {
 				if isGuarded {
-					if grid[i][j] == 0 {
+					if grid[i][j] == unguarded {
 						count--
 					}
-					grid[i][j]++
+					grid[i][j] = guarded
 				}
 			}
 		}
@@ -80,16 +82,16 @@ func countUnguarded(m int, n int, guards [][]int, walls [][]int) int {
 	for j := 0; j < n; j++ {
 		isGuarded := false
 		for i := m - 1; i >= 0; i-- {
-			if grid[i][j] == guardAlias {
+			if grid[i][j] == guard {
 				isGuarded = true
-			} else if grid[i][j] == wallAlias {
+			} else if grid[i][j] == wall {
 				isGuarded = false
 			} else {
 				if isGuarded {
-					if grid[i][j] == 0 {
+					if grid[i][j] == unguarded {
 						count--
 					}
-					grid[i][j]++
+					grid[i][j] = guarded
 				}
 			}
 		}
