@@ -47,6 +47,12 @@ func Test_maxTwoEvents(t *testing.T) {
 			},
 			want: 85,
 		},
+		{
+			args: args{
+				events: [][]int{{1, 3, 2}, {4, 5, 2}, {2, 4, 3}},
+			},
+			want: 4,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
