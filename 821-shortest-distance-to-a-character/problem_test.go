@@ -62,7 +62,7 @@ func Test_shortestToChar(t *testing.T) {
 				s: "loveleetcode",
 				c: 'e',
 			},
-			want: []int{3,2,1,0,1,0,0,1,2,2,1,0},
+			want: []int{3, 2, 1, 0, 1, 0, 0, 1, 2, 2, 1, 0},
 		},
 	}
 	for _, tt := range tests {
