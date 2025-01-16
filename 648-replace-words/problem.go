@@ -90,20 +90,18 @@ func (t *trie) findShortestPrefix(s string) (string, bool) {
 
 type trieNode struct {
 	isEnd    bool
-	children map[byte]*trieNode
+	children [26]*trieNode
 }
 
 func newTrieNode() *trieNode {
-	return &trieNode{
-		children: make(map[byte]*trieNode),
-	}
+	return &trieNode{}
 }
 
 func (t *trieNode) findChild(c byte) (*trieNode, bool) {
-	child, ok := t.children[c]
-	return child, ok
+	child := t.children[c-'a']
+	return child, child != nil
 }
 
 func (t *trieNode) addChild(c byte, child *trieNode) {
-	t.children[c] = child
+	t.children[c-'a'] = child
 }
