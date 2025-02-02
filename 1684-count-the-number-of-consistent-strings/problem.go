@@ -1,29 +1,36 @@
 package countthenumberofconsistentstrings
 
 func countConsistentStrings(allowed string, words []string) int {
-	m := make(map[byte]struct{}, len(allowed))
-
-	for i := 0; i < len(allowed); i++ {
-		m[allowed[i]] = struct{}{}
-	}
-
+	a := getBinarySignature(allowed)
 	count := 0
 
 	for i := 0; i < len(words); i++ {
-		word := words[i]
-		isConsistent := true
+		b := getBinarySignature(words[i])
 
-		for j := 0; j < len(word); j++ {
-			if _, ok := m[word[j]]; !ok {
-				isConsistent = false
-				break
-			}
-		}
-
-		if isConsistent {
+		if a&b == b {
 			count++
 		}
 	}
 
 	return count
+}
+
+func getBinarySignature(word string) int {
+	const a byte = 97
+	mask := [26]bool{}
+
+	for i := 0; i < len(word); i++ {
+		mask[word[i]-a] = true
+	}
+
+	b := 0
+
+	for i := 0; i < len(mask); i++ {
+		if mask[i] {
+			b |= 1
+		}
+		b = b << 1
+	}
+
+	return b
 }
