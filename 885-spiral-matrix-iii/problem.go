@@ -23,30 +23,22 @@ func spiralMatrixIII(rows int, cols int, rStart int, cStart int) [][]int {
 	return m
 }
 
-type direction = byte
-
-const (
-	leftRight direction = iota
-	topDown
-	rightLeft
-	downTop
-)
-
 type spiralIterator struct {
-	direction direction
+	direction byte
 	i         int
 	j         int
-	side      int
+	step      int
+	steps     int
 	round     int
+	dir       [][]int
 }
 
 func newSpiralIterator(i, j int) spiralIterator {
 	return spiralIterator{
-		direction: leftRight,
-		i:         i,
-		j:         j,
-		side:      1,
-		round:     2,
+		dir:   [][]int{{0, 1}, {1, 0}, {0, -1}, {-1, 0}},
+		i:     i,
+		j:     j,
+		steps: 1,
 	}
 }
 
@@ -55,36 +47,19 @@ func (s *spiralIterator) current() []int {
 }
 
 func (s *spiralIterator) moveNext() {
-	s.round--
+	s.i += s.dir[s.direction][0]
+	s.j += s.dir[s.direction][1]
 
-	switch s.direction {
-	case leftRight:
-		s.j++
+	s.step++
 
-		if s.round == s.side {
-			s.direction = topDown
-		}
-	case topDown:
-		s.i++
+	if s.step == s.steps {
+		s.step = 0
+		s.round++
+		s.direction = (s.direction + 1) % 4
 
-		if s.round == 0 {
-			s.direction = rightLeft
-			s.side++
-			s.round = 2 * s.side
-		}
-	case rightLeft:
-		s.j--
-
-		if s.round == s.side {
-			s.direction = downTop
-		}
-	case downTop:
-		s.i--
-
-		if s.round == 0 {
-			s.direction = leftRight
-			s.side++
-			s.round = 2 * s.side
+		if s.round == 2 {
+			s.steps++
+			s.round = 0
 		}
 	}
 }
