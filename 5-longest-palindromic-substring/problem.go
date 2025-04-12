@@ -4,13 +4,18 @@ func longestPalindrome(s string) string {
 	n, m := 0, 0
 
 	for i := 0; i < len(s); i++ {
-		for j := i; j < len(s); j++ {
+		for j := len(s)-1; j >= i; j-- {
 			if s[i] != s[j] {
 				continue
 			}
 
-			if m-n < j-i && isPalindrome(s[i:j+1]) {
+			if m-n >= j-i {
+				break
+			}
+
+			if isPalindrome(s[i:j+1]) {
 				n, m = i, j
+				break
 			}
 		}
 	}
