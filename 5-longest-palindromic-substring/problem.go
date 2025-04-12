@@ -1,35 +1,27 @@
 package longestpalindromicsubstring
 
 func longestPalindrome(s string) string {
-	n, m := 0, 0
-
-	for i := 0; i < len(s); i++ {
-		for j := len(s)-1; j >= i; j-- {
-			if s[i] != s[j] {
-				continue
-			}
-
-			if m-n >= j-i {
-				break
-			}
-
-			if isPalindrome(s[i:j+1]) {
-				n, m = i, j
-				break
+	for l := len(s); l > 0; l-- {
+		for i := 0; i <= len(s)-l; i++ {
+			if isPalindrome(s[i:l+i]) {
+				return s[i:l+i]
 			}
 		}
 	}
 	
-	return s[n:m+1]
+	return ""
 }
 
 func isPalindrome(s string) bool {
-	n := len(s)
+	l, r := 0, len(s)-1
 
-	for i := 0; i < n/2; i++ {
-		if s[i] != s[n-i-1] {
+	for l < r {
+		if s[l] != s[r] {
 			return false
 		}
+
+		l++
+		r--
 	}
 
 	return true

@@ -13,6 +13,12 @@ func Test_longestPalindrome(t *testing.T) {
 	}{
 		{
 			args: args{
+				s: "babad",
+			},
+			want: "bab",
+		},
+		{
+			args: args{
 				s: "caabaabbaa",
 			},
 			want: "aabbaa",
